@@ -470,6 +470,16 @@
             transform: scale(1.05);
         }
 
+        .logo-container a {
+            text-decoration: none;
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+
+        .logo-container a:hover {
+            transform: scale(1.02);
+        }
+
         .football-ball {
             width: 120px;
             height: 120px;
@@ -880,7 +890,9 @@
 
         <div class="right-section animated fadeInRight">
             <div class="logo-container animated fadeInRight">
-                <img src="logo.png" alt="LUCRO REAL" class="logo-image">
+                <a href="https://www.instagram.com/_pablogomees/" target="_blank" rel="noopener noreferrer">
+                    <img src="logo.png" alt="LUCRO REAL" class="logo-image">
+                </a>
             </div>
             <div class="football-ball animated fadeInRight">
                 <img src="bola.png" alt="Bola de Futebol" class="football-image">
