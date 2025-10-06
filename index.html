@@ -31,12 +31,14 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            overflow: hidden;
+            overflow-x: hidden;
+            overflow-y: auto;
             position: relative;
             -webkit-user-select: none;
             -moz-user-select: none;
             -ms-user-select: none;
             user-select: none;
+            -webkit-overflow-scrolling: touch;
         }
 
         /* Forçar fonte Chakra Petch em todos os elementos */
@@ -509,6 +511,21 @@
         @keyframes rotate {
             from { transform: rotate(0deg); }
             to { transform: rotate(360deg); }
+        }
+
+        /* Melhorias de scroll para mobile */
+        @media (max-width: 768px) {
+            body {
+                -webkit-overflow-scrolling: touch;
+                overflow-y: auto;
+                height: auto;
+                min-height: 100vh;
+            }
+            
+            .container {
+                min-height: auto;
+                padding-bottom: 20px;
+            }
         }
 
         /* Responsivo - Mobile Pequeno (320px - 480px) */
