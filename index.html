@@ -29,8 +29,9 @@
             background: linear-gradient(135deg, #000000 0%, #0a0a0a 50%, #1a1a1a 100%);
             min-height: 100vh;
             display: flex;
-            align-items: center;
-            justify-content: center;
+            flex-direction: column; /* empilha conteúdo + footer verticalmente */
+            align-items: stretch; /* deixa largura total */
+            justify-content: flex-start; /* conteúdo inicia no topo */
             overflow-x: hidden;
             overflow-y: auto;
             position: relative;
@@ -312,22 +313,29 @@
 
         .header {
             position: absolute;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
+            top: 0;
+            left: 0;
+            width: 100%;
             z-index: 10;
             text-align: center;
         }
 
         .header-text {
-            color: #5e17eb;
-            font-size: 32px;
+            color: white;
+            background: #1565c0;
+            padding: 12px 25px;
+            border-radius: 0;
+            font-size: 28px;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 3px;
-            text-shadow: 0 0 20px rgba(94, 23, 235, 0.5);
+            letter-spacing: 2px;
+            text-shadow: none;
             font-family: 'Chakra Petch', 'Arial', sans-serif !important;
             white-space: nowrap;
+            display: block;
+            box-shadow: none;
+            width: 100%;
+            margin: 0;
         }
 
         .container {
@@ -337,11 +345,16 @@
             padding: 20px;
             z-index: 2;
             position: relative;
-            margin-top: 5px;
+            margin-top: 40px; /* espaço entre header e conteúdo */
+            flex: 1 0 auto; /* ocupa o espaço disponível, empurrando o footer para o final */
+            justify-content: center; /* centraliza as duas colunas como um grupo */
+            gap: 40px; /* espaço entre as colunas */
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .left-section {
-            flex: 1;
+            flex: 0 1 560px; /* largura controlada para centralização */
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -402,7 +415,7 @@
         }
 
         .cta-button {
-            background: linear-gradient(135deg, #00bcd4 0%, #0097a7 100%);
+            background: linear-gradient(135deg, #1565c0 0%, #0d47a1 100%);
             color: white;
             border: none;
             padding: 18px 40px;
@@ -412,7 +425,7 @@
             border-radius: 50px;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(0, 188, 212, 0.3);
+            box-shadow: 0 10px 30px rgba(21, 101, 192, 0.3);
             position: relative;
             overflow: hidden;
             font-family: 'Chakra Petch', 'Arial', sans-serif !important;
@@ -421,7 +434,7 @@
 
         .cta-button:hover {
             transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(0, 188, 212, 0.5);
+            box-shadow: 0 15px 40px rgba(21, 101, 192, 0.5);
         }
 
         .cta-button:active {
@@ -446,7 +459,7 @@
         }
 
         .right-section {
-            flex: 1;
+            flex: 0 1 560px; /* largura controlada para centralização */
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -521,11 +534,14 @@
                 overflow-y: auto;
                 height: auto;
                 min-height: 100vh;
+                display: flex;
+                flex-direction: column;
             }
-            
+
             .container {
                 min-height: auto;
                 padding-bottom: 20px;
+                flex: 1 0 auto; /* ainda ocupa o espaço e mantém o footer no final */
             }
         }
 
@@ -535,6 +551,8 @@
                 flex-direction: column;
                 text-align: center;
                 padding: 10px;
+                justify-content: center;
+                align-items: center;
             }
 
             .left-section {
@@ -560,17 +578,35 @@
             }
 
             .header-text {
-                font-size: 24px;
-                letter-spacing: 2px;
+                font-size: 20px;
+                letter-spacing: 1px;
                 white-space: nowrap;
+                padding: 10px 20px;
+            }
+
+            .footer {
+                padding: 15px 12px;
+                margin-top: 30px;
+            }
+
+            .footer-logo {
+                margin-bottom: 8px;
+            }
+
+            .footer-logo-image {
+                max-width: 80px;
+            }
+
+            .footer-copyright {
+                font-size: 11px;
             }
 
             .container {
-                margin-top: 20px;
+                margin-top: 30px; /* mais espaço em telas pequenas */
             }
 
             .header {
-                top: 10px;
+                top: 0;
             }
 
             .content-box {
@@ -611,6 +647,8 @@
                 flex-direction: column;
                 text-align: center;
                 padding: 15px;
+                justify-content: center;
+                align-items: center;
             }
 
             .left-section {
@@ -629,7 +667,7 @@
             }
 
             .container {
-                margin-top: 15px;
+                margin-top: 30px;
             }
 
             .method-title {
@@ -642,9 +680,10 @@
             }
 
             .header-text {
-                font-size: 26px;
-                letter-spacing: 2px;
+                font-size: 22px;
+                letter-spacing: 1px;
                 white-space: nowrap;
+                padding: 11px 22px;
             }
 
             .description {
@@ -688,7 +727,7 @@
             }
 
             .container {
-                margin-top: 10px;
+                margin-top: 25px;
             }
 
             .method-title {
@@ -700,8 +739,9 @@
             }
 
             .header-text {
-                font-size: 28px;
+                font-size: 24px;
                 white-space: nowrap;
+                padding: 12px 25px;
             }
 
             .description {
@@ -729,8 +769,9 @@
             }
 
             .header-text {
-                font-size: 30px;
+                font-size: 26px;
                 white-space: nowrap;
+                padding: 13px 28px;
             }
 
             .logo-image {
@@ -753,8 +794,9 @@
             }
 
             .header-text {
-                font-size: 34px;
+                font-size: 30px;
                 white-space: nowrap;
+                padding: 14px 30px;
             }
 
             .description {
@@ -797,9 +839,10 @@
             }
 
             .header-text {
-                font-size: 22px;
-                letter-spacing: 2px;
+                font-size: 18px;
+                letter-spacing: 1px;
                 white-space: nowrap;
+                padding: 8px 18px;
             }
 
             .description {
@@ -816,6 +859,47 @@
                 height: 80px;
                 margin-top: 15px;
             }
+        }
+
+        /* Footer */
+        .footer {
+            background: #000;
+            padding: 20px 15px;
+            text-align: center;
+            position: relative;
+            width: 100%;
+            margin-top: 50px;
+        }
+
+        /* Linha limitadora no topo do footer */
+        .footer::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0.35) 50%, rgba(255,255,255,0.10) 100%);
+            opacity: 0.8;
+            pointer-events: none;
+        }
+
+        .footer-logo {
+            text-align: center;
+            margin-bottom: 8px;
+        }
+
+        .footer-logo-image {
+            max-width: 100px;
+            height: auto;
+        }
+
+        .footer-copyright {
+            color: white;
+            font-size: 12px;
+            margin: 0;
+            text-align: center;
+            font-family: 'Chakra Petch', 'Arial', sans-serif !important;
         }
 
         /* Ajustes para telas muito pequenas */
@@ -841,6 +925,24 @@
                 font-size: 18px;
                 letter-spacing: 1px;
                 white-space: normal;
+                padding: 8px 15px;
+            }
+
+            .footer {
+                padding: 12px 10px;
+                margin-top: 25px;
+            }
+
+            .footer-logo {
+                margin-bottom: 6px;
+            }
+
+            .footer-logo-image {
+                max-width: 60px;
+            }
+
+            .footer-copyright {
+                font-size: 10px;
             }
 
             .description {
@@ -919,6 +1021,16 @@
             </div>
         </div>
     </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-logo">
+            <img src="logo.png" alt="LucroReal Logo" class="footer-logo-image">
+        </div>
+        <div class="footer-copyright">
+            ©LucroReal. Todos os direitos reservados.
+        </div>
+    </footer>
 
     <!-- Facebook Pixel Code -->
     <script>
