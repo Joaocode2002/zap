@@ -338,6 +338,11 @@
             margin: 0;
         }
 
+        #numero-vagas {
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
         .container {
             display: flex;
             max-width: 1200px;
@@ -584,6 +589,7 @@
                 padding: 10px 20px;
             }
 
+
             .footer {
                 padding: 15px 12px;
                 margin-top: 30px;
@@ -686,6 +692,7 @@
                 padding: 11px 22px;
             }
 
+
             .description {
                 font-size: 15px;
             }
@@ -744,6 +751,7 @@
                 padding: 12px 25px;
             }
 
+
             .description {
                 font-size: 15px;
             }
@@ -774,6 +782,7 @@
                 padding: 13px 28px;
             }
 
+
             .logo-image {
                 max-width: 300px;
             }
@@ -798,6 +807,7 @@
                 white-space: nowrap;
                 padding: 14px 30px;
             }
+
 
             .description {
                 font-size: 17px;
@@ -844,6 +854,7 @@
                 white-space: nowrap;
                 padding: 8px 18px;
             }
+
 
             .description {
                 font-size: 14px;
@@ -928,6 +939,7 @@
                 padding: 8px 15px;
             }
 
+
             .footer {
                 padding: 12px 10px;
                 margin-top: 25px;
@@ -991,7 +1003,7 @@
     </div>
 
     <div class="header">
-        <div class="header-text">ÚLTIMAS VAGAS</div>
+        <div class="header-text" id="vagas-text">ÚLTIMAS <span id="numero-vagas">17</span> VAGAS GRATUITAS</div>
     </div>
 
     <div class="container">
@@ -1054,6 +1066,68 @@
     <!-- End Facebook Pixel Code -->
 
     <script>
+        // Sistema de vagas
+        let vagasAtuais = 17; // Valor inicial
+
+        // Função para atualizar o número de vagas
+        function atualizarVagas() {
+            // Verificar se há vagas disponíveis para diminuir
+            if (vagasAtuais > 1) {
+                vagasAtuais--;
+                localStorage.setItem('vagasRestantes', vagasAtuais);
+                
+                // Atualizar o texto baseado no número de vagas
+                const vagasText = document.getElementById('vagas-text');
+                const numeroVagas = document.getElementById('numero-vagas');
+                
+                if (vagasAtuais === 1) {
+                    vagasText.innerHTML = 'ÚLTIMA VAGA GRATUITA';
+                } else {
+                    vagasText.innerHTML = `ÚLTIMAS <span id="numero-vagas">${vagasAtuais}</span> VAGAS GRATUITAS`;
+                }
+                
+                // Efeito visual melhorado
+                const elementoVagas = document.getElementById('numero-vagas');
+                if (elementoVagas) {
+                    // Aplicar efeito instantaneamente
+                    elementoVagas.style.transform = 'scale(1.2)';
+                    elementoVagas.style.color = '#ff6b6b';
+                    
+                    // Voltar ao normal após 500ms
+                    setTimeout(() => {
+                        elementoVagas.style.transform = 'scale(1)';
+                        elementoVagas.style.color = 'white';
+                    }, 500);
+                }
+            }
+        }
+
+        // Função para carregar vagas do localStorage
+        function carregarVagas() {
+            const vagasSalvas = localStorage.getItem('vagasRestantes');
+            if (vagasSalvas !== null) {
+                vagasAtuais = parseInt(vagasSalvas);
+            }
+            
+            // Atualizar o texto baseado no número de vagas
+            const vagasText = document.getElementById('vagas-text');
+            if (vagasAtuais === 1) {
+                vagasText.innerHTML = 'ÚLTIMA VAGA GRATUITA';
+            } else {
+                vagasText.innerHTML = `ÚLTIMAS <span id="numero-vagas">${vagasAtuais}</span> VAGAS GRATUITAS`;
+            }
+        }
+
+        // Executar quando o DOM estiver carregado
+        document.addEventListener('DOMContentLoaded', function() {
+            carregarVagas();
+            
+            // Diminuir vagas quando a página carregar (simulando entrada de usuário)
+            setTimeout(() => {
+                atualizarVagas();
+            }, 2000); // Aguarda 2 segundos após carregar a página
+        });
+
         // Desabilitar seleção e cópia
         document.addEventListener('selectstart', function(e) {
             e.preventDefault();
