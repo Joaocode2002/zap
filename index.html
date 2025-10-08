@@ -312,7 +312,7 @@
         }
 
         .header {
-            position: absolute;
+            position: relative;
             top: 0;
             left: 0;
             width: 100%;
@@ -350,22 +350,21 @@
             padding: 20px;
             z-index: 2;
             position: relative;
-            margin-top: 40px; /* espaço entre header e conteúdo */
+            margin-top: 20px; /* espaço adequado entre header e conteúdo */
             flex: 1 0 auto; /* ocupa o espaço disponível, empurrando o footer para o final */
-            justify-content: center; /* centraliza as duas colunas como um grupo */
-            gap: 40px; /* espaço entre as colunas */
+            justify-content: center; /* centraliza o conteúdo */
             margin-left: auto;
             margin-right: auto;
         }
 
         .left-section {
-            flex: 0 1 560px; /* largura controlada para centralização */
+            flex: 1; /* ocupa todo o espaço disponível */
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding-right: 40px;
+            max-width: 600px; /* largura máxima para não ficar muito largo */
         }
 
         .content-box {
@@ -446,6 +445,60 @@
             transform: translateY(-1px);
         }
 
+        /* Estilos do vídeo */
+        .video-container {
+            margin-top: 30px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .main-video {
+            width: 100%;
+            max-width: 500px;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(0, 188, 212, 0.2);
+        }
+
+        /* Desabilitar tela cheia do vídeo */
+        .main-video::-webkit-media-controls-fullscreen-button {
+            display: none !important;
+        }
+
+        .main-video::-webkit-media-controls {
+            overflow: visible !important;
+        }
+
+        .main-video::-webkit-media-controls-panel {
+            display: flex !important;
+        }
+
+        /* Para Firefox */
+        .main-video::-moz-media-controls-fullscreen-button {
+            display: none !important;
+        }
+
+        /* Desabilitar menu de contexto (3 pontinhos) do vídeo */
+        .main-video::-webkit-media-controls-overlay-play-button {
+            display: none !important;
+        }
+
+        .main-video::-webkit-media-controls-enclosure {
+            overflow: hidden !important;
+        }
+
+        /* Remover controles extras */
+        .main-video::-webkit-media-controls-panel {
+            -webkit-appearance: none !important;
+        }
+
+        .main-video::-webkit-media-controls-start-playback-button {
+            display: none !important;
+        }
+
         /* Animação pulsante */
         .pulse {
             animation: pulse 2s infinite;
@@ -463,74 +516,6 @@
             }
         }
 
-        .right-section {
-            flex: 0 1 560px; /* largura controlada para centralização */
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-        }
-
-        .logo-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-
-        .logo-image {
-            max-width: 300px;
-            width: 100%;
-            height: auto;
-            filter: drop-shadow(0 0 20px rgba(0, 188, 212, 0.3));
-            transition: transform 0.3s ease;
-        }
-
-        .logo-image:hover {
-            transform: scale(1.05);
-        }
-
-        .logo-container a {
-            text-decoration: none;
-            display: inline-block;
-            transition: transform 0.3s ease;
-        }
-
-        .logo-container a:hover {
-            transform: scale(1.02);
-        }
-
-        .football-ball {
-            width: 120px;
-            height: 120px;
-            margin-top: 30px;
-            animation: bounce 3s ease-in-out infinite;
-            filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.3));
-        }
-
-        .football-image {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            animation: rotate 4s linear infinite;
-        }
-
-        @keyframes bounce {
-            0%, 100% { 
-                transform: translateY(0px);
-                filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.3));
-            }
-            50% { 
-                transform: translateY(-20px);
-                filter: drop-shadow(0 10px 30px rgba(255, 255, 255, 0.5));
-            }
-        }
-
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
 
         /* Melhorias de scroll para mobile */
         @media (max-width: 768px) {
@@ -561,8 +546,7 @@
             }
 
             .left-section {
-                padding-right: 0;
-                margin-bottom: 30px;
+                margin-bottom: 15px;
                 text-align: center;
             }
 
@@ -608,7 +592,7 @@
             }
 
             .container {
-                margin-top: 30px; /* mais espaço em telas pequenas */
+                margin-top: 15px; /* espaço adequado em telas pequenas */
             }
 
             .header {
@@ -621,7 +605,7 @@
             }
 
             .left-section {
-                margin-bottom: 20px;
+                margin-bottom: 10px;
             }
 
             .description {
@@ -636,15 +620,15 @@
                 width: 100%;
             }
 
-            .logo-image {
-                max-width: 200px;
-            }
-
-            .football-ball {
-                width: 80px;
-                height: 80px;
+            .video-container {
                 margin-top: 20px;
             }
+
+            .main-video {
+                max-width: 100%;
+                border-radius: 10px;
+            }
+
         }
 
         /* Responsivo - Mobile Médio (481px - 768px) */
@@ -658,8 +642,7 @@
             }
 
             .left-section {
-                padding-right: 0;
-                margin-bottom: 40px;
+                margin-bottom: 20px;
                 text-align: center;
             }
 
@@ -669,11 +652,11 @@
             }
 
             .left-section {
-                margin-bottom: 25px;
+                margin-bottom: 12px;
             }
 
             .container {
-                margin-top: 30px;
+                margin-top: 15px;
             }
 
             .method-title {
@@ -703,14 +686,15 @@
                 width: 100%;
             }
 
-            .logo-image {
-                max-width: 250px;
+            .video-container {
+                margin-top: 25px;
             }
 
-            .football-ball {
-                width: 100px;
-                height: 100px;
+            .main-video {
+                max-width: 100%;
+                border-radius: 12px;
             }
+
         }
 
         /* Responsivo - Tablet (769px - 1024px) */
@@ -721,7 +705,6 @@
             }
 
             .left-section {
-                padding-right: 20px;
                 text-align: center;
             }
 
@@ -734,7 +717,7 @@
             }
 
             .container {
-                margin-top: 25px;
+                margin-top: 15px;
             }
 
             .method-title {
@@ -756,14 +739,15 @@
                 font-size: 15px;
             }
 
-            .logo-image {
-                max-width: 280px;
+            .video-container {
+                margin-top: 25px;
             }
 
-            .football-ball {
-                width: 110px;
-                height: 110px;
+            .main-video {
+                max-width: 450px;
+                border-radius: 12px;
             }
+
         }
 
         /* Responsivo - Desktop Pequeno (1025px - 1200px) */
@@ -783,9 +767,6 @@
             }
 
 
-            .logo-image {
-                max-width: 300px;
-            }
         }
 
         /* Responsivo - Desktop Grande (1201px+) */
@@ -813,14 +794,15 @@
                 font-size: 17px;
             }
 
-            .logo-image {
-                max-width: 350px;
+            .video-container {
+                margin-top: 30px;
             }
 
-            .football-ball {
-                width: 140px;
-                height: 140px;
+            .main-video {
+                max-width: 500px;
+                border-radius: 15px;
             }
+
         }
 
         /* Ajustes para orientação landscape em mobile */
@@ -861,15 +843,15 @@
                 margin-bottom: 20px;
             }
 
-            .logo-image {
-                max-width: 180px;
-            }
-
-            .football-ball {
-                width: 80px;
-                height: 80px;
+            .video-container {
                 margin-top: 15px;
             }
+
+            .main-video {
+                max-width: 100%;
+                border-radius: 8px;
+            }
+
         }
 
         /* Footer */
@@ -967,14 +949,15 @@
                 width: 100%;
             }
 
-            .logo-image {
-                max-width: 150px;
+            .video-container {
+                margin-top: 15px;
             }
 
-            .football-ball {
-                width: 60px;
-                height: 60px;
+            .main-video {
+                max-width: 100%;
+                border-radius: 8px;
             }
+
         }
     </style>
 </head>
@@ -1019,19 +1002,17 @@
                 <button class="cta-button pulse animated fadeInRight" onclick="redirectToWhatsApp()">
                     Garanta sua vaga!
                 </button>
+                
+                <!-- Vídeo -->
+                <div class="video-container animated fadeInLeft">
+                    <video class="main-video" controls autoplay muted loop disablepictureinpicture controlslist="nodownload nofullscreen noremoteplayback">
+                        <source src="video.mp4" type="video/mp4">
+                        Seu navegador não suporta vídeos HTML5.
+                    </video>
+                </div>
             </div>
         </div>
 
-        <div class="right-section animated fadeInRight">
-            <div class="logo-container animated fadeInRight">
-                <a href="https://www.instagram.com/_pablogomees/" target="_blank" rel="noopener noreferrer">
-                    <img src="logo.png" alt="LUCRO REAL" class="logo-image">
-                </a>
-            </div>
-            <div class="football-ball animated fadeInRight">
-                <img src="bola.png" alt="Bola de Futebol" class="football-image">
-            </div>
-        </div>
     </div>
 
     <!-- Footer -->
@@ -1126,6 +1107,55 @@
             setTimeout(() => {
                 atualizarVagas();
             }, 2000); // Aguarda 2 segundos após carregar a página
+
+            // Desabilitar tela cheia e menu de contexto do vídeo
+            const video = document.querySelector('.main-video');
+            if (video) {
+                // Remover o atributo controls e adicionar controles customizados
+                video.removeAttribute('controls');
+                video.setAttribute('controls', 'controls');
+                
+                // Desabilitar menu de contexto (3 pontinhos)
+                video.addEventListener('contextmenu', function(e) {
+                    e.preventDefault();
+                    return false;
+                });
+
+                // Desabilitar eventos de tela cheia
+                video.addEventListener('fullscreenchange', function(e) {
+                    if (document.fullscreenElement === video) {
+                        document.exitFullscreen();
+                    }
+                });
+
+                video.addEventListener('webkitfullscreenchange', function(e) {
+                    if (document.webkitFullscreenElement === video) {
+                        document.webkitExitFullscreen();
+                    }
+                });
+
+                video.addEventListener('mozfullscreenchange', function(e) {
+                    if (document.mozFullScreenElement === video) {
+                        document.mozCancelFullScreen();
+                    }
+                });
+
+                // Prevenir entrada em tela cheia via teclado
+                video.addEventListener('keydown', function(e) {
+                    if (e.key === 'F11' || (e.key === 'f' && e.ctrlKey)) {
+                        e.preventDefault();
+                    }
+                });
+
+                // Desabilitar clique direito no vídeo
+                video.oncontextmenu = function() {
+                    return false;
+                };
+
+                // Adicionar atributo para desabilitar controles extras
+                video.setAttribute('disablepictureinpicture', 'true');
+                video.setAttribute('controlslist', 'nodownload nofullscreen noremoteplayback');
+            }
         });
 
         // Desabilitar seleção e cópia
