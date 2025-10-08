@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Método Delay - LUCRO REAL</title>
     <link rel="icon" type="image/png" href="bola.png">
     <link rel="shortcut icon" type="image/png" href="bola.png">
@@ -23,33 +23,15 @@
             -webkit-tap-highlight-color: transparent;
         }
 
-        /* Reset agressivo para garantir que não há espaços */
-        html, body, div, span, h1, h2, h3, h4, h5, h6, p, a, img, ul, li, form, input, button {
-            margin: 0;
-            padding: 0;
-            border: 0;
-            font-size: 100%;
-            font: inherit;
-            vertical-align: baseline;
-        }
-
-        html {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            overflow-x: hidden;
-            background: #000000;
-        }
-
         body {
             font-family: 'Chakra Petch', 'Arial', sans-serif !important;
             font-weight: 600;
-            background: #000000;
+            background: linear-gradient(135deg, #000000 0%, #0a0a0a 50%, #1a1a1a 100%);
             min-height: 100vh;
             display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-start;
+            flex-direction: column; /* empilha conteúdo + footer verticalmente */
+            align-items: stretch; /* deixa largura total */
+            justify-content: flex-start; /* conteúdo inicia no topo */
             overflow-x: hidden;
             overflow-y: auto;
             position: relative;
@@ -58,10 +40,6 @@
             -ms-user-select: none;
             user-select: none;
             -webkit-overflow-scrolling: touch;
-            margin: 0;
-            padding: 0;
-            border: none;
-            outline: none;
         }
 
         /* Forçar fonte Chakra Petch em todos os elementos */
@@ -342,7 +320,6 @@
             text-align: center;
         }
 
-
         .header-text {
             color: white;
             background: #1565c0;
@@ -366,132 +343,115 @@
             display: inline-block;
         }
 
-
-        .logo-section {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px 0 40px 0;
-            z-index: 1;
-            position: relative;
-            width: 100%;
-        }
-
-        .logo-image {
-            max-width: 200px;
-            width: 100%;
-            height: auto;
-            filter: drop-shadow(0 0 20px rgba(0, 188, 212, 0.3));
-            transition: transform 0.3s ease;
-        }
-
-        .logo-image:hover {
-            transform: scale(1.05);
-        }
-
-        .logo-section a {
-            text-decoration: none;
-            display: inline-block;
-            transition: transform 0.3s ease;
-        }
-
-        .logo-section a:hover {
-            transform: scale(1.02);
-        }
-
-        .footer {
-            background: #000;
-            padding: 20px 20px;
-            text-align: center;
-            margin-top: 20px;
-            border-top: 1px solid #333;
-            width: 100%;
-            position: relative;
-            bottom: 0;
-        }
-
-        .footer-logo {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 10px;
-        }
-
-        .footer-logo-image {
-            max-width: 120px;
-            width: 100%;
-            height: auto;
-            filter: drop-shadow(0 0 20px rgba(0, 188, 212, 0.3));
-        }
-
-        .footer-copyright {
-            color: white;
-            font-size: 14px;
-            font-weight: 400;
-            font-family: 'Chakra Petch', 'Arial', sans-serif !important;
-        }
-
         .container {
             display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
             max-width: 1200px;
             width: 100%;
             padding: 20px;
-            z-index: 1;
+            z-index: 2;
             position: relative;
-            margin-top: 60px;
-            flex: 1;
+            margin-top: 20px; /* espaço adequado entre header e conteúdo */
+            flex: 1 0 auto; /* ocupa o espaço disponível, empurrando o footer para o final */
+            justify-content: center; /* centraliza o conteúdo */
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .left-section {
+            flex: 1; /* ocupa todo o espaço disponível */
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            width: 100%;
+            max-width: 600px; /* largura máxima para não ficar muito largo */
         }
 
         .content-box {
             background: rgba(0, 0, 0, 0.7);
             backdrop-filter: blur(10px);
             border-radius: 15px;
-            padding: 30px;
+            padding: 40px;
             border: 1px solid rgba(0, 188, 212, 0.2);
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
             text-align: center;
             width: 100%;
-            max-width: 500px;
+            max-width: 600px;
         }
 
         .method-title {
             color: #00bcd4;
-            font-size: 48px;
+            font-size: 36px;
             font-weight: 700;
             text-transform: uppercase;
             margin-bottom: 20px;
-            letter-spacing: 3px;
+            letter-spacing: 2px;
             text-align: center;
             font-family: 'Chakra Petch', 'Arial', sans-serif !important;
         }
 
         .main-headline {
             color: white;
-            font-size: 18px;
-            font-weight: 400;
-            font-style: italic;
-            line-height: 1.4;
-            margin-bottom: 30px;
+            font-size: 20px;
+            font-weight: 600;
+            text-transform: uppercase;
+            line-height: 1.3;
+            margin-bottom: 25px;
             text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
             text-align: center;
             font-family: 'Chakra Petch', 'Arial', sans-serif !important;
         }
 
-        .video-container {
+        .description {
+            color: white;
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 1.6;
+            margin-bottom: 30px;
             text-align: center;
-            margin: 20px 0 0px 0;
+            font-family: 'Chakra Petch', 'Arial', sans-serif !important;
+        }
+
+        .description strong {
+            color: #00bcd4;
+            font-weight: 700;
+            font-family: 'Chakra Petch', 'Arial', sans-serif !important;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, #1565c0 0%, #0d47a1 100%);
+            color: white;
+            border: none;
+            padding: 18px 40px;
+            font-size: 18px;
+            font-weight: 700;
+            text-transform: uppercase;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(21, 101, 192, 0.3);
+            position: relative;
+            overflow: hidden;
+            font-family: 'Chakra Petch', 'Arial', sans-serif !important;
+            width: 100%;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(21, 101, 192, 0.5);
+        }
+
+        .cta-button:active {
+            transform: translateY(-1px);
+        }
+
+        /* Estilos do vídeo */
+        .video-container {
+            margin-top: 30px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         /* Player customizado */
@@ -501,9 +461,10 @@
             max-width: 500px;
             margin: 0 auto;
             background: #000;
-            border-radius: 10px;
+            border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(0, 188, 212, 0.2);
             /* Forçar container fixo */
             contain: layout style paint;
             isolation: isolate;
@@ -531,6 +492,7 @@
             -o-transform: none !important;
         }
 
+        /* Overlay com controles */
         .video-overlay {
             position: absolute;
             top: 0;
@@ -551,7 +513,7 @@
             pointer-events: none;
         }
 
-
+        /* Mensagem de som pequena */
         .sound-message {
             position: absolute;
             bottom: 20px;
@@ -594,7 +556,7 @@
             cursor: pointer;
         }
 
-        /* Mostrar overlay de som em todos os dispositivos */
+        /* Mostrar overlay de som no desktop também */
         @media (min-width: 769px) {
             .sound-activation-overlay {
                 display: flex !important;
@@ -635,7 +597,7 @@
             100% { transform: scale(1); }
         }
 
-
+        /* Controles do vídeo */
         .video-controls {
             position: absolute;
             bottom: 0;
@@ -734,24 +696,134 @@
             cursor: pointer;
         }
 
-        /* Esconder botão de tela cheia */
-        #main-video::-webkit-media-controls-fullscreen-button {
-            display: none !important;
+        /* Animação pulsante */
+        .pulse {
+            animation: pulse 2s infinite;
         }
 
-        #main-video::-webkit-media-controls {
-            overflow: visible !important;
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(0, 188, 212, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 20px rgba(0, 188, 212, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(0, 188, 212, 0);
+            }
         }
 
-        /* Para Firefox */
-        #main-video::-moz-media-controls-fullscreen-button {
-            display: none !important;
-        }
 
-        /* Responsividade para mobile */
+        /* Melhorias de scroll para mobile */
         @media (max-width: 768px) {
+            body {
+                -webkit-overflow-scrolling: touch;
+                overflow-y: auto;
+                height: auto;
+                min-height: 100vh;
+                display: flex;
+                flex-direction: column;
+            }
+
+            .container {
+                min-height: auto;
+                padding-bottom: 20px;
+                flex: 1 0 auto; /* ainda ocupa o espaço e mantém o footer no final */
+            }
+        }
+
+        /* Responsivo - Mobile Pequeno (320px - 480px) */
+        @media (max-width: 480px) {
+            .container {
+                flex-direction: column;
+                text-align: center;
+                padding: 10px;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .left-section {
+                margin-bottom: 15px;
+                text-align: center;
+            }
+
+            .content-box {
+                padding: 20px;
+                margin: 10px;
+            }
+
+            .method-title {
+                font-size: 28px;
+                margin-bottom: 15px;
+            }
+
+            .main-headline {
+                font-size: 16px;
+                line-height: 1.2;
+                margin-bottom: 20px;
+            }
+
+            .header-text {
+                font-size: 20px;
+                letter-spacing: 1px;
+                white-space: nowrap;
+                padding: 10px 20px;
+            }
+
+
+            .footer {
+                padding: 15px 12px;
+                margin-top: 30px;
+            }
+
+            .footer-logo {
+                margin-bottom: 8px;
+            }
+
+            .footer-logo-image {
+                max-width: 80px;
+            }
+
+            .footer-copyright {
+                font-size: 11px;
+            }
+
+            .container {
+                margin-top: 15px; /* espaço adequado em telas pequenas */
+            }
+
+            .header {
+                top: 0;
+            }
+
+            .content-box {
+                padding: 15px;
+                margin: 5px;
+            }
+
+            .left-section {
+                margin-bottom: 10px;
+            }
+
+            .description {
+                font-size: 14px;
+                line-height: 1.4;
+                margin-bottom: 25px;
+            }
+
+            .cta-button {
+                padding: 15px 30px;
+                font-size: 16px;
+                width: 100%;
+            }
+
+            .video-container {
+                margin-top: 20px;
+            }
+
             .custom-video-player {
                 max-width: 100%;
+                border-radius: 10px;
                 /* Forçar container fixo no mobile */
                 position: relative !important;
                 overflow: hidden !important;
@@ -780,7 +852,6 @@
                 -webkit-playsinline: true !important;
                 playsinline: true !important;
             }
-            
             
             .video-controls {
                 padding: 15px 10px 10px;
@@ -811,289 +882,7 @@
             .sound-text-large {
                 font-size: 16px;
             }
-        }
 
-        .arrow {
-            color: #ff6b6b;
-            font-size: 100px;
-            text-align: center;
-            margin: 0px 0 0px 0;
-            font-family: 'Chakra Petch', 'Arial', sans-serif !important;
-            animation: bounceArrow 2s ease-in-out infinite;
-        }
-
-        @keyframes bounceArrow {
-            0%, 100% { 
-                transform: translateY(0px);
-            }
-            50% { 
-                transform: translateY(-15px);
-            }
-        }
-
-        .description strong {
-            color: #00bcd4;
-            font-weight: 700;
-            font-family: 'Chakra Petch', 'Arial', sans-serif !important;
-        }
-
-        .cta-button {
-            background: linear-gradient(135deg, #1565c0 0%, #0d47a1 100%);
-            color: white;
-            border: none;
-            padding: 18px 40px;
-            font-size: 18px;
-            font-weight: 700;
-            text-transform: uppercase;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(21, 101, 192, 0.3);
-            position: relative;
-            overflow: hidden;
-            font-family: 'Chakra Petch', 'Arial', sans-serif !important;
-            width: 100%;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(21, 101, 192, 0.5);
-        }
-
-        .cta-button:active {
-            transform: translateY(-1px);
-        }
-
-        /* Animação pulsante */
-        .pulse {
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0% {
-                box-shadow: 0 0 0 0 rgba(21, 101, 192, 0.7);
-            }
-            70% {
-                box-shadow: 0 0 0 20px rgba(21, 101, 192, 0);
-            }
-            100% {
-                box-shadow: 0 0 0 0 rgba(21, 101, 192, 0);
-            }
-        }
-
-        .right-section {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-        }
-
-        .logo-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-
-        .logo-image {
-            max-width: 300px;
-            width: 100%;
-            height: auto;
-            filter: drop-shadow(0 0 20px rgba(0, 188, 212, 0.3));
-            transition: transform 0.3s ease;
-        }
-
-        .logo-image:hover {
-            transform: scale(1.05);
-        }
-
-        .logo-container a {
-            text-decoration: none;
-            display: inline-block;
-            transition: transform 0.3s ease;
-        }
-
-        .logo-container a:hover {
-            transform: scale(1.02);
-        }
-
-        .football-ball {
-            width: 120px;
-            height: 120px;
-            margin-top: 30px;
-            animation: bounce 3s ease-in-out infinite;
-            filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.3));
-        }
-
-        .football-image {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            animation: rotate 4s linear infinite;
-        }
-
-        @keyframes bounce {
-            0%, 100% { 
-                transform: translateY(0px);
-                filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.3));
-            }
-            50% { 
-                transform: translateY(-20px);
-                filter: drop-shadow(0 10px 30px rgba(255, 255, 255, 0.5));
-            }
-        }
-
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
-        /* Melhorias de scroll para mobile */
-        @media (max-width: 768px) {
-            body {
-                -webkit-overflow-scrolling: touch;
-                overflow-y: auto;
-                height: auto;
-                min-height: 100vh;
-            }
-            
-            .container {
-                min-height: auto;
-                padding-bottom: 20px;
-            }
-        }
-
-        /* Responsividade */
-        @media (max-width: 480px) {
-            .header-text {
-                font-size: 20px;
-                letter-spacing: 1px;
-                white-space: nowrap;
-                padding: 10px 20px;
-            }
-        }
-
-        @media (min-width: 481px) and (max-width: 768px) {
-            .header-text {
-                font-size: 22px;
-                letter-spacing: 1px;
-                white-space: nowrap;
-                padding: 11px 22px;
-            }
-        }
-
-        @media (min-width: 769px) and (max-width: 1024px) {
-            .header-text {
-                font-size: 24px;
-                white-space: nowrap;
-                padding: 12px 25px;
-            }
-        }
-
-        @media (min-width: 1025px) and (max-width: 1200px) {
-            .header-text {
-                font-size: 26px;
-                white-space: nowrap;
-                padding: 13px 28px;
-            }
-        }
-
-        @media (min-width: 1201px) {
-            .header-text {
-                font-size: 30px;
-                white-space: nowrap;
-                padding: 14px 30px;
-            }
-        }
-
-        @media (max-height: 500px) and (orientation: landscape) {
-            .header-text {
-                font-size: 18px;
-                letter-spacing: 1px;
-                white-space: nowrap;
-                padding: 8px 18px;
-            }
-        }
-
-        @media (max-width: 320px) {
-            .header-text {
-                font-size: 18px;
-                letter-spacing: 1px;
-                white-space: normal;
-                padding: 8px 15px;
-            }
-        }
-
-        /* Responsivo - Mobile Pequeno (320px - 480px) */
-        @media (max-width: 480px) {
-            .container {
-                flex-direction: column;
-                text-align: center;
-                padding: 10px;
-            }
-
-            .left-section {
-                padding-right: 0;
-                margin-bottom: 30px;
-                text-align: center;
-            }
-
-            .content-box {
-                padding: 20px;
-                margin: 10px;
-            }
-
-            .method-title {
-                font-size: 28px;
-                margin-bottom: 15px;
-            }
-
-            .main-headline {
-                font-size: 16px;
-                line-height: 1.2;
-                margin-bottom: 20px;
-            }
-
-            .container {
-                margin-top: 30px;
-            }
-
-            .logo-section {
-                padding: 15px 0 25px 0;
-            }
-
-            .content-box {
-                padding: 15px;
-                margin: 5px;
-            }
-
-            .left-section {
-                margin-bottom: 20px;
-            }
-
-            .description {
-                font-size: 14px;
-                line-height: 1.4;
-                margin-bottom: 25px;
-            }
-
-            .cta-button {
-                padding: 15px 30px;
-                font-size: 16px;
-                width: 100%;
-            }
-
-            .logo-image {
-                max-width: 200px;
-            }
-
-            .football-ball {
-                width: 80px;
-                height: 80px;
-                margin-top: 20px;
-            }
         }
 
         /* Responsivo - Mobile Médio (481px - 768px) */
@@ -1102,11 +891,12 @@
                 flex-direction: column;
                 text-align: center;
                 padding: 15px;
+                justify-content: center;
+                align-items: center;
             }
 
             .left-section {
-                padding-right: 0;
-                margin-bottom: 40px;
+                margin-bottom: 20px;
                 text-align: center;
             }
 
@@ -1116,7 +906,7 @@
             }
 
             .left-section {
-                margin-bottom: 25px;
+                margin-bottom: 12px;
             }
 
             .container {
@@ -1133,18 +923,12 @@
             }
 
             .header-text {
-                font-size: 20px;
+                font-size: 22px;
                 letter-spacing: 1px;
                 white-space: nowrap;
+                padding: 11px 22px;
             }
 
-            .header-banner {
-                padding: 7px 0;
-            }
-
-            .logo-section {
-                padding: 18px 0 30px 0;
-            }
 
             .description {
                 font-size: 15px;
@@ -1156,14 +940,15 @@
                 width: 100%;
             }
 
-            .logo-image {
-                max-width: 250px;
+            .video-container {
+                margin-top: 25px;
             }
 
-            .football-ball {
-                width: 100px;
-                height: 100px;
+            .custom-video-player {
+                max-width: 100%;
+                border-radius: 12px;
             }
+
         }
 
         /* Responsivo - Tablet (769px - 1024px) */
@@ -1174,7 +959,6 @@
             }
 
             .left-section {
-                padding-right: 20px;
                 text-align: center;
             }
 
@@ -1187,7 +971,7 @@
             }
 
             .container {
-                margin-top: 10px;
+                margin-top: 15px;
             }
 
             .method-title {
@@ -1199,22 +983,25 @@
             }
 
             .header-text {
-                font-size: 28px;
+                font-size: 24px;
                 white-space: nowrap;
+                padding: 12px 25px;
             }
+
 
             .description {
                 font-size: 15px;
             }
 
-            .logo-image {
-                max-width: 280px;
+            .video-container {
+                margin-top: 25px;
             }
 
-            .football-ball {
-                width: 110px;
-                height: 110px;
+            .custom-video-player {
+                max-width: 450px;
+                border-radius: 12px;
             }
+
         }
 
         /* Responsivo - Desktop Pequeno (1025px - 1200px) */
@@ -1228,13 +1015,12 @@
             }
 
             .header-text {
-                font-size: 30px;
+                font-size: 26px;
                 white-space: nowrap;
+                padding: 13px 28px;
             }
 
-            .logo-image {
-                max-width: 300px;
-            }
+
         }
 
         /* Responsivo - Desktop Grande (1201px+) */
@@ -1252,22 +1038,25 @@
             }
 
             .header-text {
-                font-size: 34px;
+                font-size: 30px;
                 white-space: nowrap;
+                padding: 14px 30px;
             }
+
 
             .description {
                 font-size: 17px;
             }
 
-            .logo-image {
-                max-width: 350px;
+            .video-container {
+                margin-top: 30px;
             }
 
-            .football-ball {
-                width: 140px;
-                height: 140px;
+            .custom-video-player {
+                max-width: 500px;
+                border-radius: 15px;
             }
+
         }
 
         /* Ajustes para orientação landscape em mobile */
@@ -1296,25 +1085,68 @@
             }
 
             .header-text {
-                font-size: 22px;
-                letter-spacing: 2px;
+                font-size: 18px;
+                letter-spacing: 1px;
                 white-space: nowrap;
+                padding: 8px 18px;
             }
+
 
             .description {
                 font-size: 14px;
                 margin-bottom: 20px;
             }
 
-            .logo-image {
-                max-width: 180px;
-            }
-
-            .football-ball {
-                width: 80px;
-                height: 80px;
+            .video-container {
                 margin-top: 15px;
             }
+
+            .custom-video-player {
+                max-width: 100%;
+                border-radius: 8px;
+            }
+
+        }
+
+        /* Footer */
+        .footer {
+            background: #000;
+            padding: 20px 15px;
+            text-align: center;
+            position: relative;
+            width: 100%;
+            margin-top: 50px;
+        }
+
+        /* Linha limitadora no topo do footer */
+        .footer::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0.35) 50%, rgba(255,255,255,0.10) 100%);
+            opacity: 0.8;
+            pointer-events: none;
+        }
+
+        .footer-logo {
+            text-align: center;
+            margin-bottom: 8px;
+        }
+
+        .footer-logo-image {
+            max-width: 100px;
+            height: auto;
+        }
+
+        .footer-copyright {
+            color: white;
+            font-size: 12px;
+            margin: 0;
+            text-align: center;
+            font-family: 'Chakra Petch', 'Arial', sans-serif !important;
         }
 
         /* Ajustes para telas muito pequenas */
@@ -1340,6 +1172,25 @@
                 font-size: 18px;
                 letter-spacing: 1px;
                 white-space: normal;
+                padding: 8px 15px;
+            }
+
+
+            .footer {
+                padding: 12px 10px;
+                margin-top: 25px;
+            }
+
+            .footer-logo {
+                margin-bottom: 6px;
+            }
+
+            .footer-logo-image {
+                max-width: 60px;
+            }
+
+            .footer-copyright {
+                font-size: 10px;
             }
 
             .description {
@@ -1352,14 +1203,15 @@
                 width: 100%;
             }
 
-            .logo-image {
-                max-width: 150px;
+            .video-container {
+                margin-top: 15px;
             }
 
-            .football-ball {
-                width: 60px;
-                height: 60px;
+            .custom-video-player {
+                max-width: 100%;
+                border-radius: 8px;
             }
+
         }
     </style>
 </head>
@@ -1392,35 +1244,37 @@
     </div>
 
     <div class="container">
-        <div class="logo-section">
-            <a href="https://www.instagram.com/_pablogomees/" target="_blank" rel="noopener noreferrer">
-                <img src="logo.png" alt="Logo" class="logo-image">
-            </a>
-        </div>
-        
         <div class="left-section">
             <div class="content-box animated fadeInLeft">
-                <div class="method-title animated fadeInLeft">GRUPO FREE</div>
+                <div class="method-title animated fadeInLeft">Método Delay</div>
                 <div class="main-headline animated fadeInRight">
-                    ENTRE AGORA E LUCRE COM O DELAY ESPORTIVO, SEM RISCOS E COM LUCRO GARANTIDO!
+                    Já pensou em garantir 100% de lucro sem correr nenhum risco? No mercado de delay esportivo isso não é sonho, é realidade.
                 </div>
+                <div class="description animated fadeInLeft">
+                    Pare de ser uma pessoa que acha que no futebol é fácil prever, ou que seu guru predileto pode te fazer mudar de vida com apostas. Com nosso <strong>método</strong>, você não depende da análise de ninguém. Com apenas um <strong>celular</strong> e <strong>internet</strong>, você pode <strong>ganhar dinheiro</strong> todos os dias sem preocupação. Mas isso só é possível dentro do <strong>GRUPO LUCRO REAL</strong>.
+                </div>
+                <button class="cta-button pulse animated fadeInRight" onclick="redirectToWhatsApp()">
+                    Garanta sua vaga!
+                </button>
+                
+                <!-- Vídeo -->
                 <div class="video-container animated fadeInLeft">
                     <div class="custom-video-player" id="custom-player">
-            <video id="main-video" preload="metadata" muted playsinline webkit-playsinline autoplay>
-                <source src="video.mp4" type="video/mp4">
-                Seu navegador não suporta o elemento de vídeo.
-            </video>
-            <div class="video-overlay">
-                <div class="sound-message" id="sound-message">
-                    <div class="sound-text">🔊 Toque para ativar o som</div>
-                </div>
-            </div>
-            <div class="sound-activation-overlay" id="sound-activation-overlay">
-                <div class="sound-activation-message">
-                    <div class="sound-icon">🔊</div>
-                    <div class="sound-text-large">Toque para ativar o som</div>
-                </div>
-            </div>
+                        <video id="main-video" preload="metadata" muted playsinline webkit-playsinline>
+                            <source src="video.mp4" type="video/mp4">
+                            Seu navegador não suporta o elemento de vídeo.
+                        </video>
+                        <div class="video-overlay">
+                            <div class="sound-message" id="sound-message">
+                                <div class="sound-text">🔊 Toque para ativar o som</div>
+                            </div>
+                        </div>
+                        <div class="sound-activation-overlay" id="sound-activation-overlay">
+                            <div class="sound-activation-message">
+                                <div class="sound-icon">🔊</div>
+                                <div class="sound-text-large">Toque para ativar o som</div>
+                            </div>
+                        </div>
                         <div class="video-controls">
                             <div class="progress-container">
                                 <div class="progress-bar" id="progress-bar">
@@ -1440,14 +1294,12 @@
                         </div>
                     </div>
                 </div>
-                <div class="arrow animated fadeInLeft">↓</div>
-                <button class="cta-button pulse animated fadeInRight" onclick="redirectToWhatsApp()">
-                    ENTRE PARA O GRUPO!
-                </button>
             </div>
         </div>
+
     </div>
 
+    <!-- Footer -->
     <footer class="footer">
         <div class="footer-logo">
             <img src="logo.png" alt="LucroReal Logo" class="footer-logo-image">
@@ -1479,57 +1331,39 @@
     <!-- End Facebook Pixel Code -->
 
     <script>
-        // Desabilitar seleção e cópia
-        document.addEventListener('selectstart', function(e) {
-            e.preventDefault();
-        });
+        // Sistema de vagas
+        let vagasAtuais = 17; // Valor inicial
 
-        // Desabilitar menu de contexto (botão direito)
-        document.addEventListener('contextmenu', function(e) {
-            e.preventDefault();
-        });
-
-        // Desabilitar atalhos de teclado para cópia
-        document.addEventListener('keydown', function(e) {
-            // Desabilitar Ctrl+A, Ctrl+C, Ctrl+V, Ctrl+X, Ctrl+S
-            if (e.ctrlKey && (e.keyCode === 65 || e.keyCode === 67 || e.keyCode === 86 || e.keyCode === 88 || e.keyCode === 83)) {
-                e.preventDefault();
-            }
-            // Desabilitar F12 (DevTools)
-            if (e.keyCode === 123) {
-                e.preventDefault();
-            }
-        });
-
-        // Desabilitar arrastar imagens
-        document.addEventListener('dragstart', function(e) {
-            e.preventDefault();
-        });
-
-        let vagasAtuais = 17;
-
+        // Função para atualizar o número de vagas
         function atualizarVagas() {
+            // Se está na última vaga (1), reinicia para 17
             if (vagasAtuais === 1) {
                 vagasAtuais = 17;
                 localStorage.setItem('vagasRestantes', vagasAtuais);
                 
+                // Atualizar o texto para mostrar as 17 vagas
                 const vagasText = document.getElementById('vagas-text');
                 vagasText.innerHTML = `ÚLTIMAS <span id="numero-vagas">${vagasAtuais}</span> VAGAS GRATUITAS`;
                 
+                // Efeito visual de reinício
                 const elementoVagas = document.getElementById('numero-vagas');
                 if (elementoVagas) {
+                    // Aplicar efeito instantaneamente
                     elementoVagas.style.transform = 'scale(1.2)';
                     elementoVagas.style.color = '#00bcd4';
                     
+                    // Voltar ao normal após 500ms
                     setTimeout(() => {
                         elementoVagas.style.transform = 'scale(1)';
                         elementoVagas.style.color = 'white';
                     }, 500);
                 }
             } else {
+                // Diminuir vagas normalmente
                 vagasAtuais--;
                 localStorage.setItem('vagasRestantes', vagasAtuais);
                 
+                // Atualizar o texto baseado no número de vagas
                 const vagasText = document.getElementById('vagas-text');
                 const numeroVagas = document.getElementById('numero-vagas');
                 
@@ -1539,11 +1373,14 @@
                     vagasText.innerHTML = `ÚLTIMAS <span id="numero-vagas">${vagasAtuais}</span> VAGAS GRATUITAS`;
                 }
                 
+                // Efeito visual melhorado
                 const elementoVagas = document.getElementById('numero-vagas');
                 if (elementoVagas) {
+                    // Aplicar efeito instantaneamente
                     elementoVagas.style.transform = 'scale(1.2)';
                     elementoVagas.style.color = '#ff6b6b';
                     
+                    // Voltar ao normal após 500ms
                     setTimeout(() => {
                         elementoVagas.style.transform = 'scale(1)';
                         elementoVagas.style.color = 'white';
@@ -1552,12 +1389,14 @@
             }
         }
 
+        // Função para carregar vagas do localStorage
         function carregarVagas() {
             const vagasSalvas = localStorage.getItem('vagasRestantes');
             if (vagasSalvas !== null) {
                 vagasAtuais = parseInt(vagasSalvas);
             }
             
+            // Atualizar o texto baseado no número de vagas
             const vagasText = document.getElementById('vagas-text');
             if (vagasAtuais === 1) {
                 vagasText.innerHTML = 'ÚLTIMA VAGA GRATUITA';
@@ -1566,25 +1405,27 @@
             }
         }
 
+        // Executar quando o DOM estiver carregado
         document.addEventListener('DOMContentLoaded', function() {
             carregarVagas();
             
+            // Diminuir vagas quando a página carregar (simulando entrada de usuário)
             setTimeout(() => {
                 atualizarVagas();
-            }, 2000);
+            }, 2000); // Aguarda 2 segundos após carregar a página
 
             // Player customizado
             const video = document.getElementById('main-video');
-        const playPauseBtn = document.getElementById('play-pause-btn');
+            const playPauseBtn = document.getElementById('play-pause-btn');
             const muteBtn = document.getElementById('mute-btn');
             const progressBar = document.getElementById('progress-bar');
             const progressFill = document.getElementById('progress-fill');
             const volumeSlider = document.getElementById('volume-slider');
             const currentTimeEl = document.getElementById('current-time');
             const durationEl = document.getElementById('duration');
-        const videoOverlay = document.querySelector('.video-overlay');
-        const soundMessage = document.getElementById('sound-message');
-        const soundActivationOverlay = document.getElementById('sound-activation-overlay');
+            const videoOverlay = document.querySelector('.video-overlay');
+            const soundMessage = document.getElementById('sound-message');
+            const soundActivationOverlay = document.getElementById('sound-activation-overlay');
 
             if (video) {
                 // Função para formatar tempo
@@ -1628,7 +1469,7 @@
                     }
                 }
 
-            playPauseBtn.addEventListener('click', togglePlay);
+                playPauseBtn.addEventListener('click', togglePlay);
 
                 // Mute/Unmute
                 function toggleMute() {
@@ -1636,8 +1477,8 @@
                     muteBtn.textContent = video.muted ? '🔇' : '🔊';
                     volumeSlider.value = video.muted ? 0 : video.volume * 100;
                     
-                    // Mostrar mensagem de som no mobile quando mutado
-                    if (window.innerWidth <= 768 && video.muted) {
+                    // Mostrar mensagem de som quando mutado
+                    if (video.muted) {
                         soundMessage.classList.add('show');
                     } else {
                         soundMessage.classList.remove('show');
@@ -1652,8 +1493,8 @@
                     video.muted = this.value == 0;
                     muteBtn.textContent = video.muted ? '🔇' : '🔊';
                     
-                    // Mostrar mensagem de som no mobile quando volume = 0
-                    if (window.innerWidth <= 768 && this.value == 0) {
+                    // Mostrar mensagem de som quando volume = 0
+                    if (this.value == 0) {
                         soundMessage.classList.add('show');
                     } else {
                         soundMessage.classList.remove('show');
@@ -1667,144 +1508,152 @@
                     video.currentTime = pos * video.duration;
                 });
 
-            // Iniciar vídeo automaticamente
-            function iniciarVideo() {
-                // No desktop, tentar iniciar com som ativado
-                if (window.innerWidth > 768) {
+                // Iniciar vídeo automaticamente
+                function iniciarVideo() {
+                    // Tentar iniciar com som ativado em todos os dispositivos
                     video.muted = false;
-                    video.volume = 1.0; // Volume máximo no desktop
-                }
-                
-                // Tentar autoplay com som no desktop
-                const playPromise = video.play();
-                
-                if (playPromise !== undefined) {
-                    playPromise.then(() => {
+                    
+                    video.play().then(() => {
                         playPauseBtn.textContent = '⏸';
                         videoOverlay.classList.add('hidden');
                         soundMessage.classList.remove('show');
-                        verificarSom();
-                        console.log('Vídeo iniciado automaticamente com som');
+                        verificarSom(); // Verificar se precisa mostrar overlay de som
+                        console.log('Vídeo iniciado automaticamente');
                     }).catch(function(error) {
-                        console.log('Autoplay com som bloqueado, tentando mutado');
-                        // Se falhar com som, tentar mutado
-                        video.muted = true;
-                        video.play().then(() => {
-                            playPauseBtn.textContent = '⏸';
-                            videoOverlay.classList.add('hidden');
-                            soundMessage.classList.add('show');
-                            soundActivationOverlay.classList.remove('hidden'); // Mostrar overlay de som
-                            console.log('Vídeo iniciado automaticamente mutado');
-                        }).catch(function(error2) {
-                            console.log('Autoplay completamente bloqueado');
-                            verificarSom();
-                        });
+                        console.log('Autoplay bloqueado, aguardando interação do usuário');
+                        // Mostrar overlay de ativação de som se autoplay for bloqueado
+                        verificarSom();
+                    });
+                }
+
+                // Função para ativar som no primeiro toque
+                function ativarSom() {
+                    video.muted = false;
+                    soundMessage.classList.remove('show');
+                    soundActivationOverlay.classList.add('hidden');
+                    console.log('Som ativado');
+                }
+
+                // Mostrar overlay de ativação de som se o vídeo estiver mutado (em todos os dispositivos)
+                function verificarSom() {
+                    if (video.muted) {
+                        soundActivationOverlay.classList.remove('hidden');
+                    } else {
+                        soundActivationOverlay.classList.add('hidden');
+                    }
+                }
+
+                // Forçar vídeo a ficar dentro do container (especialmente no mobile)
+                function forcarContainer() {
+                    video.style.width = '100%';
+                    video.style.maxWidth = '500px';
+                    video.style.height = 'auto';
+                    video.style.objectFit = 'contain';
+                    video.style.transform = 'none';
+                    video.style.zoom = '1';
+                    video.style.scale = '1';
+                    video.style.position = 'relative';
+                    video.style.zIndex = '1';
+                    video.style.minWidth = '0';
+                    video.style.minHeight = '0';
+                    // Forçar playsinline no mobile
+                    video.setAttribute('playsinline', 'true');
+                    video.setAttribute('webkit-playsinline', 'true');
+                }
+
+                // Aplicar forçamento de container
+                forcarContainer();
+                video.addEventListener('loadedmetadata', forcarContainer);
+                video.addEventListener('play', forcarContainer);
+                video.addEventListener('playing', forcarContainer);
+                video.addEventListener('loadstart', forcarContainer);
+                video.addEventListener('canplay', forcarContainer);
+
+                // Iniciar automaticamente quando carregar
+                video.addEventListener('loadedmetadata', function() {
+                    setTimeout(iniciarVideo, 500); // Pequeno delay para garantir carregamento
+                });
+
+                // Event listener para o overlay de ativação de som
+                soundActivationOverlay.addEventListener('click', function() {
+                    ativarSom();
+                });
+
+                soundActivationOverlay.addEventListener('touchstart', function() {
+                    ativarSom();
+                });
+
+                // Eventos de toque para ativar som (se estiver mutado em qualquer dispositivo)
+                document.addEventListener('touchstart', function() {
+                    if (video.muted) {
+                        ativarSom();
+                    }
+                }, { once: true });
+                
+                document.addEventListener('click', function() {
+                    if (video.muted) {
+                        ativarSom();
+                    }
+                }, { once: true });
+
+                // Verificar som quando o vídeo carregar
+                video.addEventListener('loadedmetadata', function() {
+                    verificarSom();
+                });
+
+                // Proteções adicionais para mobile
+                if (window.innerWidth <= 768) {
+                    // Prevenir zoom no vídeo
+                    video.addEventListener('touchstart', function(e) {
+                        e.preventDefault();
+                        forcarContainer();
+                    }, { passive: false });
+                    
+                    // Prevenir gestos de zoom
+                    video.addEventListener('touchmove', function(e) {
+                        if (e.touches.length > 1) {
+                            e.preventDefault();
+                        }
+                    }, { passive: false });
+                    
+                    // Forçar container a cada mudança de orientação
+                    window.addEventListener('orientationchange', function() {
+                        setTimeout(forcarContainer, 500);
+                    });
+                    
+                    // Forçar container quando a janela redimensionar
+                    window.addEventListener('resize', function() {
+                        setTimeout(forcarContainer, 100);
                     });
                 }
             }
+        });
 
-            // Função para ativar som no primeiro toque
-            function ativarSom() {
-                video.muted = false;
-                soundMessage.classList.remove('show');
-                soundActivationOverlay.classList.add('hidden');
-                console.log('Som ativado');
+        // Desabilitar seleção e cópia
+        document.addEventListener('selectstart', function(e) {
+            e.preventDefault();
+        });
+
+        // Desabilitar menu de contexto (botão direito)
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+        });
+
+        // Desabilitar atalhos de teclado para cópia
+        document.addEventListener('keydown', function(e) {
+            // Desabilitar Ctrl+A, Ctrl+C, Ctrl+V, Ctrl+X, Ctrl+S
+            if (e.ctrlKey && (e.keyCode === 65 || e.keyCode === 67 || e.keyCode === 86 || e.keyCode === 88 || e.keyCode === 83)) {
+                e.preventDefault();
             }
-
-            // Mostrar overlay de ativação de som se o vídeo estiver mutado (em todos os dispositivos)
-            function verificarSom() {
-                if (video.muted) {
-                    soundActivationOverlay.classList.remove('hidden');
-                } else {
-                    soundActivationOverlay.classList.add('hidden');
-                }
+            // Desabilitar F12 (DevTools)
+            if (e.keyCode === 123) {
+                e.preventDefault();
             }
+        });
 
-            // Forçar vídeo a ficar dentro do container (especialmente no mobile)
-            function forcarContainer() {
-                video.style.width = '100%';
-                video.style.maxWidth = '500px';
-                video.style.height = 'auto';
-                video.style.objectFit = 'contain';
-                video.style.transform = 'none';
-                video.style.zoom = '1';
-                video.style.scale = '1';
-                video.style.position = 'relative';
-                video.style.zIndex = '1';
-                video.style.minWidth = '0';
-                video.style.minHeight = '0';
-                // Forçar playsinline no mobile
-                video.setAttribute('playsinline', 'true');
-                video.setAttribute('webkit-playsinline', 'true');
-            }
-
-            // Aplicar forçamento de container
-            forcarContainer();
-            video.addEventListener('loadedmetadata', forcarContainer);
-            video.addEventListener('play', forcarContainer);
-            video.addEventListener('playing', forcarContainer);
-            video.addEventListener('loadstart', forcarContainer);
-            video.addEventListener('canplay', forcarContainer);
-
-            // Iniciar automaticamente quando carregar
-            video.addEventListener('loadedmetadata', function() {
-                setTimeout(iniciarVideo, 500); // Pequeno delay para garantir carregamento
-            });
-
-            // Event listener para o overlay de ativação de som
-            soundActivationOverlay.addEventListener('click', function() {
-                ativarSom();
-            });
-
-            soundActivationOverlay.addEventListener('touchstart', function() {
-                ativarSom();
-            });
-
-            // Eventos de toque para ativar som (em todos os dispositivos se estiver mutado)
-            document.addEventListener('touchstart', function() {
-                if (video.muted) {
-                    ativarSom();
-                }
-            }, { once: true });
-            
-            document.addEventListener('click', function() {
-                if (video.muted) {
-                    ativarSom();
-                }
-            }, { once: true });
-                
-
-            // Verificar som quando o vídeo carregar
-            video.addEventListener('loadedmetadata', function() {
-                verificarSom();
-            });
-
-            // Proteções adicionais para mobile
-            if (window.innerWidth <= 768) {
-                // Prevenir zoom no vídeo
-                video.addEventListener('touchstart', function(e) {
-                    e.preventDefault();
-                    forcarContainer();
-                }, { passive: false });
-                
-                // Prevenir gestos de zoom
-                video.addEventListener('touchmove', function(e) {
-                    if (e.touches.length > 1) {
-                        e.preventDefault();
-                    }
-                }, { passive: false });
-                
-                // Forçar container a cada mudança de orientação
-                window.addEventListener('orientationchange', function() {
-                    setTimeout(forcarContainer, 500);
-                });
-                
-                // Forçar container quando a janela redimensionar
-                window.addEventListener('resize', function() {
-                    setTimeout(forcarContainer, 100);
-                });
-            }
-            }
+        // Desabilitar arrastar imagens
+        document.addEventListener('dragstart', function(e) {
+            e.preventDefault();
         });
 
         function redirectToWhatsApp() {
