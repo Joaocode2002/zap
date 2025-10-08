@@ -499,6 +499,70 @@
             display: none !important;
         }
 
+        /* Controles específicos para mobile - mais restritivos */
+        @media (max-width: 768px) {
+            .main-video::-webkit-media-controls-fullscreen-button {
+                display: none !important;
+            }
+
+            .main-video::-webkit-media-controls-overlay-play-button {
+                display: none !important;
+            }
+
+            .main-video::-webkit-media-controls-start-playback-button {
+                display: none !important;
+            }
+
+            .main-video::-webkit-media-controls-timeline {
+                display: none !important;
+            }
+
+            .main-video::-webkit-media-controls-current-time-display {
+                display: none !important;
+            }
+
+            .main-video::-webkit-media-controls-time-remaining-display {
+                display: none !important;
+            }
+
+            .main-video::-webkit-media-controls-mute-button {
+                display: none !important;
+            }
+
+            .main-video::-webkit-media-controls-volume-slider {
+                display: none !important;
+            }
+
+            .main-video::-webkit-media-controls-seek-back-button {
+                display: none !important;
+            }
+
+            .main-video::-webkit-media-controls-seek-forward-button {
+                display: none !important;
+            }
+
+            .main-video::-webkit-media-controls-rewind-button {
+                display: none !important;
+            }
+
+            .main-video::-webkit-media-controls-return-to-realtime-button {
+                display: none !important;
+            }
+
+            .main-video::-webkit-media-controls-toggle-closed-captions-button {
+                display: none !important;
+            }
+
+            /* Manter apenas play/pause */
+            .main-video::-webkit-media-controls-play-button {
+                display: block !important;
+            }
+
+            .main-video::-webkit-media-controls-pause-button {
+                display: block !important;
+            }
+        }
+
         /* Animação pulsante */
         .pulse {
             animation: pulse 2s infinite;
@@ -1009,7 +1073,7 @@
                         <source src="video.mp4" type="video/mp4">
                         Seu navegador não suporta vídeos HTML5.
                     </video>
-                </div>
+            </div>
             </div>
         </div>
 
@@ -1052,8 +1116,30 @@
 
         // Função para atualizar o número de vagas
         function atualizarVagas() {
-            // Verificar se há vagas disponíveis para diminuir
-            if (vagasAtuais > 1) {
+            // Se está na última vaga (1), reinicia para 17
+            if (vagasAtuais === 1) {
+                vagasAtuais = 17;
+                localStorage.setItem('vagasRestantes', vagasAtuais);
+                
+                // Atualizar o texto para mostrar as 17 vagas
+                const vagasText = document.getElementById('vagas-text');
+                vagasText.innerHTML = `ÚLTIMAS <span id="numero-vagas">${vagasAtuais}</span> VAGAS GRATUITAS`;
+                
+                // Efeito visual de reinício
+                const elementoVagas = document.getElementById('numero-vagas');
+                if (elementoVagas) {
+                    // Aplicar efeito instantaneamente
+                    elementoVagas.style.transform = 'scale(1.2)';
+                    elementoVagas.style.color = '#00bcd4';
+                    
+                    // Voltar ao normal após 500ms
+                    setTimeout(() => {
+                        elementoVagas.style.transform = 'scale(1)';
+                        elementoVagas.style.color = 'white';
+                    }, 500);
+                }
+            } else {
+                // Diminuir vagas normalmente
                 vagasAtuais--;
                 localStorage.setItem('vagasRestantes', vagasAtuais);
                 
@@ -1111,9 +1197,21 @@
             // Desabilitar tela cheia e menu de contexto do vídeo
             const video = document.querySelector('.main-video');
             if (video) {
-                // Remover o atributo controls e adicionar controles customizados
-                video.removeAttribute('controls');
-                video.setAttribute('controls', 'controls');
+                // Detectar se é mobile
+                const isMobile = window.innerWidth <= 768;
+                
+                if (isMobile) {
+                    // Em mobile: controles mais restritivos
+                    video.setAttribute('controls', 'controls');
+                    video.setAttribute('controlslist', 'nodownload nofullscreen noremoteplayback noplaybackrate');
+                    video.setAttribute('disablepictureinpicture', 'true');
+                } else {
+                    // Em desktop: controles normais mas sem tela cheia
+                    video.removeAttribute('controls');
+                    video.setAttribute('controls', 'controls');
+                    video.setAttribute('controlslist', 'nodownload nofullscreen noremoteplayback');
+                    video.setAttribute('disablepictureinpicture', 'true');
+                }
                 
                 // Desabilitar menu de contexto (3 pontinhos)
                 video.addEventListener('contextmenu', function(e) {
@@ -1152,9 +1250,18 @@
                     return false;
                 };
 
-                // Adicionar atributo para desabilitar controles extras
-                video.setAttribute('disablepictureinpicture', 'true');
-                video.setAttribute('controlslist', 'nodownload nofullscreen noremoteplayback');
+                // Em mobile, desabilitar toque longo
+                if (isMobile) {
+                    video.addEventListener('touchstart', function(e) {
+                        if (e.touches.length > 1) {
+                            e.preventDefault();
+                        }
+                    });
+
+                    video.addEventListener('touchend', function(e) {
+                        e.preventDefault();
+                    });
+                }
             }
         });
 
