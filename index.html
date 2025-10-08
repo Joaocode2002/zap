@@ -696,6 +696,88 @@
             cursor: pointer;
         }
 
+        /* Esconder controles nativos do vídeo */
+        #main-video::-webkit-media-controls {
+            display: none !important;
+        }
+
+        #main-video::-webkit-media-controls-panel {
+            display: none !important;
+        }
+
+        #main-video::-webkit-media-controls-play-button {
+            display: none !important;
+        }
+
+        #main-video::-webkit-media-controls-timeline {
+            display: none !important;
+        }
+
+        #main-video::-webkit-media-controls-current-time-display {
+            display: none !important;
+        }
+
+        #main-video::-webkit-media-controls-time-remaining-display {
+            display: none !important;
+        }
+
+        #main-video::-webkit-media-controls-mute-button {
+            display: none !important;
+        }
+
+        #main-video::-webkit-media-controls-volume-slider {
+            display: none !important;
+        }
+
+        #main-video::-webkit-media-controls-fullscreen-button {
+            display: none !important;
+        }
+
+        #main-video::-webkit-media-controls-overlay-play-button {
+            display: none !important;
+        }
+
+        #main-video::-webkit-media-controls-enclosure {
+            display: none !important;
+        }
+
+        /* Para Firefox */
+        #main-video::-moz-media-controls {
+            display: none !important;
+        }
+
+        #main-video::-moz-media-controls-panel {
+            display: none !important;
+        }
+
+        #main-video::-moz-media-controls-play-button {
+            display: none !important;
+        }
+
+        #main-video::-moz-media-controls-timeline {
+            display: none !important;
+        }
+
+        #main-video::-moz-media-controls-current-time-display {
+            display: none !important;
+        }
+
+        #main-video::-moz-media-controls-time-remaining-display {
+            display: none !important;
+        }
+
+        #main-video::-moz-media-controls-mute-button {
+            display: none !important;
+        }
+
+        #main-video::-moz-media-controls-volume-slider {
+            display: none !important;
+        }
+
+        #main-video::-moz-media-controls-fullscreen-button {
+            display: none !important;
+        }
+
         /* Animação pulsante */
         .pulse {
             animation: pulse 2s infinite;
@@ -849,8 +931,6 @@
                 min-width: 0 !important;
                 min-height: 0 !important;
                 /* Prevenir fullscreen nativo */
-                -webkit-playsinline: true !important;
-                playsinline: true !important;
             }
             
             .video-controls {
@@ -1260,7 +1340,7 @@
                 <!-- Vídeo -->
                 <div class="video-container animated fadeInLeft">
                     <div class="custom-video-player" id="custom-player">
-                        <video id="main-video" preload="metadata" muted playsinline webkit-playsinline>
+                        <video id="main-video" preload="metadata" muted playsinline webkit-playsinline autoplay>
                             <source src="video.mp4" type="video/mp4">
                             Seu navegador não suporta o elemento de vídeo.
                         </video>
@@ -1508,22 +1588,57 @@
                     video.currentTime = pos * video.duration;
                 });
 
-                // Iniciar vídeo automaticamente
+                // Sistema de autoplay inteligente com 3 níveis de fallback
                 function iniciarVideo() {
-                    // Tentar iniciar com som ativado em todos os dispositivos
-                    video.muted = false;
+                    const isMobile = window.innerWidth <= 768;
                     
-                    video.play().then(() => {
-                        playPauseBtn.textContent = '⏸';
-                        videoOverlay.classList.add('hidden');
-                        soundMessage.classList.remove('show');
-                        verificarSom(); // Verificar se precisa mostrar overlay de som
-                        console.log('Vídeo iniciado automaticamente');
-                    }).catch(function(error) {
-                        console.log('Autoplay bloqueado, aguardando interação do usuário');
-                        // Mostrar overlay de ativação de som se autoplay for bloqueado
-                        verificarSom();
-                    });
+                    // Nível 1: Tentar autoplay com som (desktop) ou mutado (mobile)
+                    const initialMuted = isMobile ? true : false;
+                    video.muted = initialMuted;
+                    
+                    const playPromise = video.play();
+                    
+                    if (playPromise !== undefined) {
+                        playPromise.then(() => {
+                            // Sucesso no primeiro nível
+                            playPauseBtn.textContent = '⏸';
+                            videoOverlay.classList.add('hidden');
+                            soundMessage.classList.remove('show');
+                            verificarSom();
+                            console.log(`Vídeo iniciado automaticamente (${isMobile ? 'mutado' : 'com som'})`);
+                        }).catch(function(error) {
+                            console.log('Nível 1 falhou, tentando nível 2...');
+                            
+                            // Nível 2: Tentar com configuração oposta
+                            video.muted = !initialMuted;
+                            video.play().then(() => {
+                                playPauseBtn.textContent = '⏸';
+                                videoOverlay.classList.add('hidden');
+                                if (video.muted) {
+                                    soundMessage.classList.add('show');
+                                    soundActivationOverlay.classList.remove('hidden');
+                                }
+                                verificarSom();
+                                console.log(`Vídeo iniciado no nível 2 (${video.muted ? 'mutado' : 'com som'})`);
+                            }).catch(function(error2) {
+                                console.log('Nível 2 falhou, tentando nível 3...');
+                                
+                                // Nível 3: Tentar apenas com muted
+                                video.muted = true;
+                                video.play().then(() => {
+                                    playPauseBtn.textContent = '⏸';
+                                    videoOverlay.classList.add('hidden');
+                                    soundMessage.classList.add('show');
+                                    soundActivationOverlay.classList.remove('hidden');
+                                    verificarSom();
+                                    console.log('Vídeo iniciado no nível 3 (mutado)');
+                                }).catch(function(error3) {
+                                    console.log('Todos os níveis falharam - autoplay completamente bloqueado');
+                                    verificarSom();
+                                });
+                            });
+                        });
+                    }
                 }
 
                 // Função para ativar som no primeiro toque
@@ -1626,6 +1741,47 @@
                         setTimeout(forcarContainer, 100);
                     });
                 }
+
+                // Proteções gerais para todos os dispositivos
+                // Prevenir menu de contexto no vídeo
+                video.addEventListener('contextmenu', function(e) {
+                    e.preventDefault();
+                    return false;
+                });
+
+                // Prevenir arrastar o vídeo
+                video.addEventListener('dragstart', function(e) {
+                    e.preventDefault();
+                    return false;
+                });
+
+                // Prevenir seleção de texto no vídeo
+                video.addEventListener('selectstart', function(e) {
+                    e.preventDefault();
+                    return false;
+                });
+
+                // Prevenir atalhos de teclado no vídeo
+                video.addEventListener('keydown', function(e) {
+                    // Prevenir F11 (fullscreen), F (fullscreen), Space (play/pause)
+                    if (e.keyCode === 122 || e.keyCode === 70 || e.keyCode === 32) {
+                        e.preventDefault();
+                        return false;
+                    }
+                });
+
+                // Prevenir picture-in-picture
+                video.addEventListener('enterpictureinpicture', function(e) {
+                    e.preventDefault();
+                    return false;
+                });
+
+                // Forçar atributos de segurança
+                video.setAttribute('disablepictureinpicture', 'true');
+                video.setAttribute('controlslist', 'nodownload nofullscreen noremoteplayback');
+                video.setAttribute('oncontextmenu', 'return false;');
+                video.setAttribute('ondragstart', 'return false;');
+                video.setAttribute('onselectstart', 'return false;');
             }
         });
 
